@@ -1,0 +1,19 @@
+@mixin resteo-pm {
+        padding: 0;
+        margin: 0;
+}
+
+@mixin btn($bg-color, $color, $bold) {
+        background-color: $bg-color;
+        color: $color;
+        border-radius: 50px;
+        padding: 20px 30px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        @if($bold=='true') {
+                font-weight: bolder;
+        }
+}

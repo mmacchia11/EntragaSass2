@@ -1,0 +1,170 @@
+@import 'colores';
+@import 'mixin';
+
+
+$box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.6);
+
+$limite:10;
+$unidad:8px;
+
+
+@function tamanio($valor) {
+        @return $valor * $unidad;
+}
+
+
+/* DISEÑO */
+
+.btn {
+
+        /* BOTON CALL TO ACTION */
+        &.btn-cta {
+                @include btn($color-principal, $color-secundario, 'true');
+
+                &:hover {
+                        @include btn($color-secundario, $color-terciario, 'true');
+                        box-shadow: $box-shadow;
+                }
+        }
+
+        &:hover {
+                @include btn($color-terciario, $color-secundario, 'true');
+                box-shadow: $box-shadow;
+        }
+}
+
+
+
+* {
+        @include resteo-pm();
+        box-sizing: border-box;
+}
+
+body {
+        background-color: $color-principal;
+        font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+        color: $color-secundario;
+        text-decoration: none;
+}
+
+h2 {
+        font-weight: bolder;
+        font-size: tamanio(6);
+}
+
+h3 {
+        font-weight: lighter;
+        font-size: tamanio(3);
+}
+
+.container {
+        background-color: white;
+        margin: 100px auto;
+        width: 1280;
+        padding: 50px;
+        box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
+
+        background-image: url(../img/fondo3.jpg);
+        background-size: 100% 100%;
+}
+
+ul {
+        @include resteo-pm();
+        list-style: none;
+        display: flex;
+        gap: 20px;
+
+        li {
+                a {
+                        @include btn($bg-color:$color-terciario, $color:$color-fuente, $bold:'true');
+
+                        &:hover {
+                                @include btn($color-secundario, $color-terciario, 'false');
+                                box-shadow: $box-shadow;
+                        }
+                }
+        }
+}
+
+
+header {
+        nav {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+        }
+}
+
+
+.precios{
+        .prev{
+                font-size: tamanio(2);
+                font-weight: bolder;
+                color: $color-fuente;
+                text-decoration: line-through;
+        }
+        .now{
+                font-size: tamanio(5);
+                font-weight: bolder;
+        }
+}
+
+
+.row {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        .col {
+                width: 50%;
+        }
+
+        .col-30 {
+                width: 30%;
+        }
+
+        .col-70 {
+                width: 70%;
+
+                
+        }
+}
+
+.m-auto {
+        margin: 0 auto;
+}
+
+/* generar diferente margees apartin de una unidad base */
+
+@for $i from 1 to $limite {
+        .m-#{$i} {
+                margin: $i * $unidad;
+        }
+
+
+}
+
+@for $i from 1 to $limite {
+        .p-#{$i} {
+                padding: $i * $unidad;
+        }
+
+
+
+}
+
+@for $i from 1 to $limite {
+        .py-#{$i} {
+                padding: $i * $unidad 0;
+        }
+}
+
+
+@for $i from 1 to 4{
+        .w-#{$i} {
+                width:$i * 25%;
+        }
+} 
